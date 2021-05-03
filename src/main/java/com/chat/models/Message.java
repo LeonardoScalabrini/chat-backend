@@ -1,26 +1,40 @@
 package com.chat.models;
 
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
 import java.util.Objects;
 
+@Entity
 public class Message {
 
-    private String id;
+    @EmbeddedId
+    private MessageId id;
+
     private String value;
 
-    public String getId() {
-        return id;
+    private String chat;
+
+    private Message() {
+
     }
 
-    public void setId(String id) {
+    public Message(MessageId id, String value, String chat) {
+        this();
         this.id = id;
+        this.value = value;
+        this.chat = chat;
+    }
+
+    public MessageId getId() {
+        return id;
     }
 
     public String getValue() {
         return value;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public String getChat() {
+        return chat;
     }
 
     @Override
@@ -28,12 +42,13 @@ public class Message {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Message message = (Message) o;
-        return Objects.equals(id, message.id) &&
-                value.equals(message.value);
+        return id.equals(message.id) &&
+                value.equals(message.value) &&
+                chat.equals(message.chat);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, value);
+        return Objects.hash(id, value, chat);
     }
 }
