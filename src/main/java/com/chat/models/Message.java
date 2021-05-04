@@ -8,9 +8,9 @@ import java.util.Objects;
 public class Message {
 
     @EmbeddedId
-    private MessageId id;
+    private MessageId messageId;
 
-    private String value;
+    private String message;
 
     private String chat;
 
@@ -18,19 +18,19 @@ public class Message {
 
     }
 
-    public Message(MessageId id, String value, String chat) {
+    public Message(MessageId messageId, String message, String chat) {
         this();
-        this.id = id;
-        this.value = value;
+        this.messageId = messageId;
+        this.message = message;
         this.chat = chat;
     }
 
-    public MessageId getId() {
-        return id;
+    public String getId() {
+        return messageId.getId();
     }
 
-    public String getValue() {
-        return value;
+    public String getMessage() {
+        return message;
     }
 
     public String getChat() {
@@ -41,14 +41,14 @@ public class Message {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Message message = (Message) o;
-        return id.equals(message.id) &&
-                value.equals(message.value) &&
-                chat.equals(message.chat);
+        Message message1 = (Message) o;
+        return messageId.equals(message1.messageId) &&
+                message.equals(message1.message) &&
+                chat.equals(message1.chat);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, value, chat);
+        return Objects.hash(messageId, message, chat);
     }
 }

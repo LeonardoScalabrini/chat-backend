@@ -12,12 +12,12 @@ public class MessageTest {
 
     @Test
     public void getId() {
-        assertEquals(messageId, message.getId());
+        assertEquals(messageId.getId(), message.getId());
     }
 
     @Test
-    public void getValue() {
-        assertEquals("message", message.getValue());
+    public void getMessage() {
+        assertEquals("message", message.getMessage());
     }
 
     @Test

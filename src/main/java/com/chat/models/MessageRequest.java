@@ -10,7 +10,7 @@ public class MessageRequest {
     }
 
     public MessageRequest(String chat, String message) {
-        super();
+        this();
         this.chat = chat;
         this.message = message;
     }

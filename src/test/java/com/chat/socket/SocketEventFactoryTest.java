@@ -1,10 +1,10 @@
 package com.chat.socket;
 
+import com.chat.commands.SaveMessageCommand;
 import com.chat.config.SocketConfig;
 import com.chat.models.MessageRequest;
 import com.corundumstudio.socketio.SocketIONamespace;
 import com.corundumstudio.socketio.SocketIOServer;
-import com.corundumstudio.socketio.listener.DataListener;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentMatchers;
@@ -45,7 +45,7 @@ public class SocketEventFactoryTest {
         verify(socketConfig, times(1)).getNamespaces();
         verify(socketIOServer, times(1)).addNamespace("/namespace1");
         verify(socketIOServer, times(1)).addNamespace("/namespace2");
-        verify(socketIONamespace, times(2)).addEventListener(eq("event"), eq(MessageRequest.class), ArgumentMatchers.<DataListener<MessageRequest>>any());
+        verify(socketIONamespace, times(2)).addEventListener(eq("event"), eq(MessageRequest.class), ArgumentMatchers.any(SaveMessageCommand.class));
         verify(socketConfig, times(2)).getMessageEvent();
     }
 }

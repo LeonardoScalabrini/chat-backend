@@ -47,7 +47,7 @@ public class ChatControllerTest {
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.[0].id").exists())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.[0].value").exists())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.[0].message").exists())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.[0].chat").exists());
 
         verify(chatService, times(1)).fetchMessages("chat");
