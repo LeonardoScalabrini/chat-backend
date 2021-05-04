@@ -21,7 +21,7 @@ public class ChatController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(value = "/messages/{filtro}", method = RequestMethod.GET)
+    @GetMapping(value = "/messages/{filtro}")
     public List<Message> fetchMessages(@PathVariable("filtro") String filtro) {
         return chatService.fetchMessages(filtro);
     }
