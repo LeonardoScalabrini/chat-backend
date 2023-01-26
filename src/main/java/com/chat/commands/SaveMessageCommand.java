@@ -12,20 +12,25 @@ import com.corundumstudio.socketio.listener.DataListener;
 
 public class SaveMessageCommand implements DataListener<MessageRequest> {
 
-    private final ChatRepository chatRepository;
-    private final SocketIONamespace socketIONamespace;
-    private final SocketConfig socketConfig;
+  private final ChatRepository chatRepository;
+  private final SocketIONamespace socketIONamespace;
+  private final SocketConfig socketConfig;
 
-    public SaveMessageCommand(ChatRepository chatRepository, SocketIONamespace socketIONamespace, SocketConfig socketConfig) {
-        this.chatRepository = chatRepository;
-        this.socketIONamespace = socketIONamespace;
-        this.socketConfig = socketConfig;
-    }
+  public SaveMessageCommand(
+      ChatRepository chatRepository,
+      SocketIONamespace socketIONamespace,
+      SocketConfig socketConfig) {
+    this.chatRepository = chatRepository;
+    this.socketIONamespace = socketIONamespace;
+    this.socketConfig = socketConfig;
+  }
 
-    @Override
-    public void onData(SocketIOClient socketIOClient, MessageRequest messageRequest, AckRequest ackRequest) {
-        Message message = new Message(new MessageId(), messageRequest.getMessage(), messageRequest.getChat());
-        chatRepository.save(message);
-        socketIONamespace.getBroadcastOperations().sendEvent(socketConfig.getMessageEvent(), message);
-    }
+  @Override
+  public void onData(
+      SocketIOClient socketIOClient, MessageRequest messageRequest, AckRequest ackRequest) {
+    Message message =
+        new Message(new MessageId(), messageRequest.getMessage(), messageRequest.getChat());
+    chatRepository.save(message);
+    socketIONamespace.getBroadcastOperations().sendEvent(socketConfig.getMessageEvent(), message);
+  }
 }

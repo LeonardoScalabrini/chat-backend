@@ -9,18 +9,18 @@ import org.springframework.stereotype.Component;
 @Component
 public class SocketFactory {
 
-    private final SocketConfig socketConfig;
+  private final SocketConfig socketConfig;
 
-    @Autowired
-    public SocketFactory(SocketConfig socketConfig) {
-        this.socketConfig = socketConfig;
-    }
+  @Autowired
+  public SocketFactory(SocketConfig socketConfig) {
+    this.socketConfig = socketConfig;
+  }
 
-    public SocketIOServer create() {
-        Configuration config = new Configuration();
-        config.setHostname(socketConfig.getHostname());
-        config.setPort(socketConfig.getPort());
+  public SocketIOServer create() {
+    Configuration config = new Configuration();
+    config.setHostname(socketConfig.getHostname());
+    config.setPort(socketConfig.getPort());
 
-        return new SocketIOServer(config);
-    }
+    return new SocketIOServer(config);
+  }
 }

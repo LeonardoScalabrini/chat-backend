@@ -2,24 +2,23 @@ package com.chat.models;
 
 public class MessageRequest {
 
-    private String chat;
+  private String chat;
 
-    private String message;
+  private String message;
 
-    private MessageRequest() {
-    }
+  private MessageRequest() {}
 
-    public MessageRequest(String chat, String message) {
-        this();
-        this.chat = chat;
-        this.message = message;
-    }
+  public MessageRequest(String chat, String message) {
+    this();
+    this.chat = chat;
+    this.message = message;
+  }
 
-    public String getChat() {
-        return chat;
-    }
+  public String getChat() {
+    return chat;
+  }
 
-    public String getMessage() {
-        return message;
-    }
+  public String getMessage() {
+    return message;
+  }
 }
