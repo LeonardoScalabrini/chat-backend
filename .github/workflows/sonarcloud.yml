@@ -31,7 +31,7 @@ jobs:
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
       - name: Build and analyze
-        run: run: mvn verify sonar:sonar \
+        run: mvn verify sonar:sonar \
           -Dsonar.host.url=https://sonarcloud.io \
           -Dsonar.organization=LeonardoScalabrini_chat-backend \
           -Dsonar.projectKey=leonardoscalabrini
