@@ -21,6 +21,8 @@ public class MessageIdTest {
   public void testEquals() {
     MessageId outher = new MessageId();
     assertNotEquals(outher, messageId);
+    assertNotEquals(null, messageId);
+    assertNotEquals(new Object(), messageId);
   }
 
   @Test

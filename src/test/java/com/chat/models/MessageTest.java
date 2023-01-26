@@ -35,6 +35,8 @@ public class MessageTest {
     assertNotEquals(messageDiffValue, message);
     Message messageDiffChat = new Message(messageId, "message", "chatDiff");
     assertNotEquals(messageDiffChat, message);
+    assertNotEquals(null, message);
+    assertNotEquals(new Object(), message);
   }
 
   @Test
