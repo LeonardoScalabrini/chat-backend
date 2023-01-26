@@ -6,7 +6,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import com.chat.models.Message;
 import com.chat.models.MessageId;
 import com.chat.services.ChatService;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Collections;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,8 +26,6 @@ public class ChatControllerTest {
   @MockBean private ChatService chatService;
 
   @Autowired private MockMvc mockMvc;
-
-  @Autowired private ObjectMapper mapper;
 
   @Before
   public void init() {
